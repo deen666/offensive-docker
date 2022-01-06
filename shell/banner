@@ -18,4 +18,5 @@ echo "\t${redColour}By Creator: ${blueColour}Arsenio Aguirre\t\t\t${redColour}Em
 echo "\t${redColour}Github: ${blueColour}https://github.com/aaaguirrep/offensive-docker"
 echo "\t${grayColour}Repositories links:"
 echo "\t${redColour}Docker Hub: ${blueColour}https://hub.docker.com/r/deen666/offensive-docker"
+echo "\t${redColour}Github: ${blueColour}https://github.com/deen666/offensive-docker-arm64"
 echo "\t${greenColour}************************************************************************************"
