@@ -12,7 +12,7 @@
 <br/>
 
 
-Offensive Docker from https://github.com/deen666/offensive-docker is an image with the more used tools to create an pentest environment easily and quickly.
+Offensive Docker from https://github.com/aaaguirrep/offensive-docker is an image with the more used tools to create an pentest environment easily and quickly.
 I've made for arm64
 
 
@@ -458,9 +458,9 @@ The image was tested in the following environments:
 
 
 ## For an original please see:
-https://github.com/deen666/offensive-docker
+https://github.com/aaaguirrep/offensive-docker
 
-## :coffee: Donations
+## :coffee: Donations (To an original creator)
 
 Thanks for your donations, are always appreciated.
 
@@ -470,7 +470,7 @@ While I drink the coffee I check more tools to add in the docker image.
 
 ## Contributors
 
-Thank you to all our [contributors](https://github.com/deen666/offensive-docker/graphs/contributors)!
+Thank you to all our [contributors](https://github.com/aaaguirrep/offensive-docker/graphs/contributors)!
 
 ## Contributing
 
@@ -481,3 +481,4 @@ Thank you to all our [contributors](https://github.com/deen666/offensive-docker/
 [MIT](LICENSE)
 
 Copyright (c) 2020, Arsenio Aguirre
+
