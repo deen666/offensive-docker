@@ -373,7 +373,7 @@ RUN \
     #wget --quiet https://github.com/michenriksen/gitrob/releases/download/v2.0.0-beta/gitrob_linux_amd64_2.0.0-beta.zip -O gitrob.zip && \
     #unzip gitrob.zip -d gitrob && \
     #rm gitrob.zip && \
-    go get github.com/michenriksen/gitrob
+    go get github.com/michenriksen/gitrob \
 # Install gitleaks
     wget --quiet https://github.com/zricethezav/gitleaks/releases/download/v8.2.5/gitleaks_8.2.5_linux_arm64.tar.gz -O gitleaks && \
     chmod +x gitleaks && \
