@@ -414,8 +414,8 @@ RUN \
     #wget --quiet https://github.com/jaeles-project/jaeles/releases/download/beta-v0.12/jaeles-v0.12-linux-amd64.zip -O jaeles.zip && \
     wget --quiet https://github.com/jaeles-project/jaeles/releases/download/beta-v0.17/jaeles-v0.17-linux.zip -O jaeles.zip && \
     unzip jaeles.zip && \
-    rm jaeles.zip && \
-    mv jaeles-v0.17-linux jaeles
+    rm jaeles.zip
+    #mv jaeles-v0.17-linux jaeles
 
 # OWASP
 FROM builder4 as builder5
@@ -444,7 +444,7 @@ FROM builder5 as builder6
 COPY --from=bruteForce /temp/ /tools/bruteForce/
 
 WORKDIR /tools/bruteForce/crowbar
-RUN pip install -r requirements.txt \
+RUN pip install -r requirements.txt
 
 # BUILDER CRACKING
 FROM baseline as cracking
@@ -464,7 +464,8 @@ FROM builder6 as builder7
 COPY --from=cracking /temp/ /tools/cracking/
 RUN \
 # Install hashcat
-    ln -s /tools/cracking/hashcat/hashcat.bin /usr/bin/hashcat
+    #ln -s /tools/cracking/hashcat/hashcat.bin /usr/bin/hashcat
+    cd /tools/cracking/john/src
 # Install john the ripper
 WORKDIR /tools/cracking/john/src
 RUN ./configure && make -s clean && make -sj4
@@ -504,11 +505,11 @@ RUN \
 
 WORKDIR /temp/peass
 RUN \
-    wget -q https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/binaries/Obfuscated%20Releases/winPEASany.exe && \
-    wget -q https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/binaries/Obfuscated%20Releases/winPEASx64.exe && \
-    wget -q https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/binaries/Obfuscated%20Releases/winPEASx86.exe && \
-    wget -q https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/winPEAS/winPEASbat/winPEAS.bat && \
-    wget -q https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh
+    wget -q https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F253%2Fmerge/winPEASany_ofs.exe && \
+    wget -q https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F253%2Fmerge/winPEASx64_ofs.exe && \
+    wget -q https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F253%2Fmerge/winPEASx86_ofs.exe && \
+    wget -q https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F253%2Fmerge/winPEAS.bat && \
+    wget -q https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F253%2Fmerge/linpeas.sh
 
 # Install smbmap
 WORKDIR /temp
@@ -579,7 +580,7 @@ RUN \
 # Download Pass-the-Hash
     git clone --depth 1 https://github.com/byt3bl33d3r/pth-toolkit.git && \
 # Download Mimikatz
-    wget --quiet https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20200816/mimikatz_trunk.zip -O mimikatz.zip && \
+    wget --quiet https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20210810-2/mimikatz_trunk.zip -O mimikatz.zip && \
     unzip mimikatz.zip -d mimikatz && \
     rm mimikatz.zip && \
     mkdir netcat && \
