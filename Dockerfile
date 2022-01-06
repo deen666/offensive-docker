@@ -273,23 +273,23 @@ WORKDIR /tools/recon
 
 # Install gobuster
 RUN \
-    go get github.com/OJ/gobuster && \
+    go install github.com/OJ/gobuster@latest && \
 # Install tojson
-    go get -u github.com/tomnomnom/hacks/tojson && \
+    go install github.com/tomnomnom/hacks/tojson@latest && \
 # Install gowitness
     ln -s /tools/recon/gowitness/gowitness /usr/bin/gowitness && \
 # Install subjack
-    go get github.com/haccer/subjack && \
+    go install github.com/haccer/subjack@latest && \
 # Install SubOver 
-    go get github.com/Ice3man543/SubOver && \
+    go install github.com/Ice3man543/SubOver@latest && \
 # Install tko-subs
-    go get github.com/anshumanbh/tko-subs && \
+    go install github.com/anshumanbh/tko-subs@latest && \
 # Install hakcheckurl
-    go get github.com/hakluke/hakcheckurl && \
+    go install github.com/hakluke/hakcheckurl@latest && \
 # Install haktldextract
-    go get github.com/hakluke/haktldextract && \
+    go install github.com/hakluke/haktldextract@latest && \
 # Install gotop
-    go get github.com/cjbassi/gotop && \
+    go install github.com/cjbassi/gotop@latest && \
 # Install aquatone
     ln -s /tools/recon/aquatone/aquatone /usr/bin/aquatone && \
 # Install knock
@@ -305,23 +305,25 @@ RUN \
 # Install subjs
     ln -s /tools/recon/subjs/subjs /usr/bin/subjs && \
 # Install otxurls
-    go get github.com/lc/otxurls && \
+    go install github.com/lc/otxurls@latest && \
 # Install amass
     ln -s /tools/recon/amass/amass_linux_amd64/amass /usr/bin/amass && \
 # Install hakrevdns
-    go get github.com/hakluke/hakrevdns && \
+    go install github.com/hakluke/hakrevdns@latest && \
 # Install ffuf
-    go get github.com/ffuf/ffuf && \
+    go install github.com/ffuf/ffuf@latest && \
 # Install httprobe
-    go get -u github.com/tomnomnom/httprobe && \
+    go install github.com/tomnomnom/httprobe@latest && \
 # Install hakrawler
-    go get github.com/hakluke/hakrawler && \
+    go install github.com/hakluke/hakrawler@latest && \
 # Install waybackurls
-    go get github.com/tomnomnom/waybackurls && \
+    go install github.com/tomnomnom/waybackurls@latest && \
 # Download gospider
-    go get -u github.com/jaeles-project/gospider && \
+    go install github.com/jaeles-project/gospider@latest && \
 # Download getJS
-    go get github.com/003random/getJS && \
+    go install github.com/003random/getJS@latest && \
+# Download gitrob
+    #go install github.com/michenriksen/gitrob@latest && \
 # Install findomain
     ln -s /tools/recon/findomain/findomain /usr/bin/findomain && \
 # Install subfinder
@@ -371,12 +373,11 @@ WORKDIR /temp
 
 # Download gitGrabber
 RUN \
-    git clone --depth 1 https://github.com/hisxo/gitGraber.git && \
+    # git clone --depth 1 https://github.com/hisxo/gitGraber.git && \
 # Install gitrob
     #wget --quiet https://github.com/michenriksen/gitrob/releases/download/v2.0.0-beta/gitrob_linux_amd64_2.0.0-beta.zip -O gitrob.zip && \
     #unzip gitrob.zip -d gitrob && \
     #rm gitrob.zip && \
-    go get github.com/michenriksen/gitrob \
 # Install gitleaks
     wget --quiet https://github.com/zricethezav/gitleaks/releases/download/v8.2.5/gitleaks_8.2.5_linux_arm64.tar.gz -O gitleaks && \
     chmod +x gitleaks && \
@@ -421,7 +422,7 @@ FROM builder4 as builder5
 COPY --from=owasp /temp/ /tools/owasp/
 # Install kxss
 RUN \
-    go get github.com/tomnomnom/hacks/kxss && \
+    go install github.com/tomnomnom/hacks/kxss@latest && \
 # Install dalfox
     ln -s /tools/owasp/dalfox/dalfox /usr/bin/dalfox && \
 # Install jaeles
@@ -623,7 +624,7 @@ WORKDIR /tools/otherResources
 RUN \
     git clone --depth 1 https://github.com/gwen001/pentest-tools.git && \
 # Download qsreplace
-    go get -u github.com/tomnomnom/qsreplace
+    go install github.com/tomnomnom/qsreplace@latest
 
 # OS TUNNING
 
