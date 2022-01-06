@@ -4,8 +4,8 @@ FROM --platform=linux/arm64/v8 ubuntu AS baseline
 #Original from
 #LABEL maintainer="Arsenio Aguirre" \
 #      email="a_aguirre117@hotmail.com"
-#
-LABEL maintainer="DEEN"
+LABEL maintainer="DEEN" 
+# build for arm64 by DEEN
 
 
 RUN apt-get update && \
@@ -208,6 +208,7 @@ RUN \
     mkdir /temp/subfinder && \
     mkdir /temp/findomain && \
     mkdir /temp/gau && \
+    mkdir /temp/httpx && \
     mkdir /temp/subjs
 
 WORKDIR /temp/Photon
@@ -237,9 +238,11 @@ RUN \
 WORKDIR /temp/subfinder
 RUN \
     #wget --quiet https://github.com/projectdiscovery/subfinder/releases/download/v2.4.5/subfinder_2.4.5_linux_amd64.tar.gz -O subfinder.tar.gz && \
-    wget --quiet https://github.com/projectdiscovery/subfinder/releases/download/v2.4.9/subfinder_2.4.9_linux_arm64.zip -O subfinder.tar.gz && \
-    tar -xzf subfinder.tar.gz && \
-    rm subfinder.tar.gz
+    wget --quiet https://github.com/projectdiscovery/subfinder/releases/download/v2.4.9/subfinder_2.4.9_linux_arm64.zip -O subfinder.zip && \
+    #tar -xzf subfinder.tar.gz && \
+    #rm subfinder.tar.gz
+    unzip subfinder.zip -d subfinder && \
+    rm subfinder.zip && \
 
 # Download gau
 #WORKDIR /temp/gau
@@ -259,9 +262,9 @@ RUN \
 WORKDIR /temp/httpx
 RUN \
     #wget --quiet https://github.com/projectdiscovery/httpx/releases/download/v1.0.1/httpx_1.0.1_linux_amd64.tar.gz -O httpx.tar.gz && \
-    wget --quiet https://github.com/projectdiscovery/httpx/releases/download/v1.1.4/httpx_1.1.4_linux_arm64.zip -O httpx.tar.gz && \
-    tar -xzf httpx.tar.gz && \
-    rm httpx.tar.gz
+    wget --quiet https://github.com/projectdiscovery/httpx/releases/download/v1.1.4/httpx_1.1.4_linux_arm64.zip -O httpx.zip && \
+    unzip httpx.zip -d httpx && \
+    rm httpx.zip && \
 
 # RECON
 FROM builder as builder2
