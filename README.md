@@ -336,7 +336,7 @@ I've made for arm64
 
 ## :memo: Documentation
 
-See the project's [wiki](https://github.com/deen666/offensive-docker/wiki) for documentation.
+See the project's [wiki](https://github.com/aaaguirrep/offensive-docker/wiki) for documentation.
 (From an original)
 
 ## :hammer_and_wrench: Usage
@@ -390,7 +390,7 @@ You can set up the docker image with nice configurations like as:
 
 ### 1. Configure credentials in the docker
 
-To use access keys, tokens or API Keys in the docker review the next repo [Offensive Docker Custom](https://github.com/deen666/offensive-docker-custom)
+To use access keys, tokens or API Keys in the docker review the next repo [Offensive Docker Custom](https://github.com/aaaguirrep/offensive-docker-custom)
 
 ### 2. Alias to connect to HTB (Hack the Box) VPN
 
