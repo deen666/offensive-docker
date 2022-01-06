@@ -440,13 +440,13 @@ FROM builder5 as builder6
 COPY --from=bruteForce /temp/ /tools/bruteForce/
 
 WORKDIR /tools/bruteForce/crowbar
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt \
 
 # BUILDER CRACKING
-#FROM baseline as cracking
-#RUN mkdir /temp
-#WORKDIR /temp
-#RUN \
+FROM baseline as cracking
+RUN mkdir /temp
+WORKDIR /temp
+RUN \
 #    # Download hashcat
 #    wget --quiet https://hashcat.net/files/hashcat-6.1.1.7z -O hashcat.7z && \
 #    7z x hashcat.7z && \
