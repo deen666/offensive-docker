@@ -1,4 +1,4 @@
-FROM arm64/v8/ubuntu as baseline  
+FROM --platform=linux/arm64/v8 ubuntu AS baseline
 
 #Build for arm64 
 #Original from
