@@ -1,7 +1,12 @@
-FROM ubuntu as baseline
+FROM arm64/v8/ubuntu as baseline  
 
-LABEL maintainer="Arsenio Aguirre" \
-      email="a_aguirre117@hotmail.com"
+#Build for arm64 
+#Original from
+#LABEL maintainer="Arsenio Aguirre" \
+#      email="a_aguirre117@hotmail.com"
+#
+LABEL maintainer="DEEN"
+
 
 RUN apt-get update && \
     DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
@@ -73,6 +78,8 @@ RUN \
     # enum4linux dependencies
     ldap-utils \
     smbclient \
+    # cracking
+    hashcat \
     # john dependencies
     build-essential \
     libssl-dev \
@@ -131,10 +138,11 @@ WORKDIR /tmp
 RUN \
 # Update from 1.15.5 to 1.16.2
 #    wget -q https://dl.google.com/go/go1.15.5.linux-amd64.tar.gz -O go.tar.gz && \
-    wget -q https://dl.google.com/go/go1.16.2.linux-amd64.tar.gz -O go.tar.gz && \
+    wget -q https://go.dev/dl/go1.17.5.linux-arm64.tar.gz -O go.tar.gz && \
     tar -C /usr/local -xzf go.tar.gz && \
 # Install aws-cli
-    curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip && \
+    #curl https://awscli.amazonaws.com/awscli-exe-linux-arm64.zip -o awscliv2.zip && \
+    curl https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip -o awscliv2.zip && \
     unzip awscliv2.zip && \
     ./aws/install && \
 # Install node
@@ -148,15 +156,15 @@ ENV PATH "$PATH:$GOPATH/bin:$GOROOT/bin"
 RUN mkdir -p /tools/portScanning
 WORKDIR /tools/portScanning
 
-RUN \
+#RUN \
 # Download naabu
-    mkdir -p /tools/portScanning/naabu
-WORKDIR /tools/portScanning/naabu
-RUN \
-    wget --quiet https://github.com/projectdiscovery/naabu/releases/download/v1.1.4/naabu_1.1.4_linux_amd64.tar.gz -O naabu.tar.gz && \
-    tar -xzf naabu.tar.gz && \
-    rm naabu.tar.gz && \
-    ln -s /tools/portScanning/naabu/naabu /usr/bin/naabu
+#    mkdir -p /tools/portScanning/naabu
+#WORKDIR /tools/portScanning/naabu
+#RUN \
+#    wget --quiet https://github.com/projectdiscovery/naabu/releases/download/v1.1.4/naabu_1.1.4_linux_amd64.tar.gz -O naabu.tar.gz && \
+#    tar -xzf naabu.tar.gz && \
+#    rm naabu.tar.gz && \
+#    ln -s /tools/portScanning/naabu/naabu /usr/bin/naabu
 
 # BUILDER RECON
 FROM baseline as recon
@@ -183,11 +191,13 @@ RUN \
 # Downlado CMSeeK
     git clone --depth 1 https://github.com/Tuhinshubhra/CMSeeK.git && \
 # Install aquatone
-    wget --quiet https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip -O aquatone.zip && \
+    #wget --quiet https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip -O aquatone.zip && \
+    wget --quiet https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_arm64_1.7.0.zip -O aquatone.zip && \
     unzip aquatone.zip -d aquatone  && \
     rm aquatone.zip && \
 # Install amass
-    wget --quiet https://github.com/OWASP/Amass/releases/download/v3.10.5/amass_linux_amd64.zip -O amass.zip && \
+    #wget --quiet https://github.com/OWASP/Amass/releases/download/v3.10.5/amass_linux_amd64.zip -O amass.zip && \
+    wget --quiet https://github.com/OWASP/Amass/releases/download/v3.10.5/amass_linux_arm64.zip -O amass.zip && \
     unzip amass.zip -d amass && \
     rm amass.zip && \
 # Download Sublist3r
@@ -211,10 +221,11 @@ RUN \
     chmod +x cmseek.py
 
 # Download gowitness
-WORKDIR /temp/gowitness
-RUN \
-    wget --quiet https://github.com/sensepost/gowitness/releases/download/1.3.4/gowitness-linux-amd64 -O gowitness && \
-    chmod +x gowitness
+#WORKDIR /temp/gowitness
+#RUN \
+    #wget --quiet https://github.com/sensepost/gowitness/releases/download/1.3.4/gowitness-linux-amd64 -O gowitness && \
+#    wget --quiet https://github.com/sensepost/gowitness/releases/download/1.3.4/gowitness-linux-arm64 -O gowitness && \
+#    chmod +x gowitness
 
 # Download findomain
 WORKDIR /temp/findomain
@@ -225,28 +236,30 @@ RUN \
 # Download subfinder
 WORKDIR /temp/subfinder
 RUN \
-    wget --quiet https://github.com/projectdiscovery/subfinder/releases/download/v2.4.5/subfinder_2.4.5_linux_amd64.tar.gz -O subfinder.tar.gz && \
+    #wget --quiet https://github.com/projectdiscovery/subfinder/releases/download/v2.4.5/subfinder_2.4.5_linux_amd64.tar.gz -O subfinder.tar.gz && \
+    wget --quiet https://github.com/projectdiscovery/subfinder/releases/download/v2.4.9/subfinder_2.4.9_linux_arm64.zip -O subfinder.tar.gz && \
     tar -xzf subfinder.tar.gz && \
     rm subfinder.tar.gz
 
 # Download gau
-WORKDIR /temp/gau
-RUN \
-    wget --quiet https://github.com/lc/gau/releases/download/v1.0.3/gau_1.0.3_linux_amd64.tar.gz -O gau.tar.gz && \
-    tar -xzf gau.tar.gz && \
-    rm gau.tar.gz
+#WORKDIR /temp/gau
+#RUN \
+#    wget --quiet https://github.com/lc/gau/releases/download/v1.0.3/gau_1.0.3_linux_amd64.tar.gz -O gau.tar.gz && \
+#    tar -xzf gau.tar.gz && \
+#    rm gau.tar.gz
 
 # Download subjs
-WORKDIR /temp/subjs
-RUN \
-    wget --quiet https://github.com/lc/subjs/releases/download/v1.0.1/subjs_1.0.1_linux_amd64.tar.gz -O subjs.tar.gz && \
-    tar -xzf subjs.tar.gz && \
-    rm subjs.tar.gz
+#WORKDIR /temp/subjs
+#RUN \
+#    wget --quiet https://github.com/lc/subjs/releases/download/v1.0.1/subjs_1.0.1_linux_amd64.tar.gz -O subjs.tar.gz && \
+#    tar -xzf subjs.tar.gz && \
+#    rm subjs.tar.gz
 
 # Download httpx
 WORKDIR /temp/httpx
 RUN \
-    wget --quiet https://github.com/projectdiscovery/httpx/releases/download/v1.0.1/httpx_1.0.1_linux_amd64.tar.gz -O httpx.tar.gz && \
+    #wget --quiet https://github.com/projectdiscovery/httpx/releases/download/v1.0.1/httpx_1.0.1_linux_amd64.tar.gz -O httpx.tar.gz && \
+    wget --quiet https://github.com/projectdiscovery/httpx/releases/download/v1.1.4/httpx_1.1.4_linux_arm64.zip -O httpx.tar.gz && \
     tar -xzf httpx.tar.gz && \
     rm httpx.tar.gz
 
@@ -357,11 +370,12 @@ WORKDIR /temp
 RUN \
     git clone --depth 1 https://github.com/hisxo/gitGraber.git && \
 # Install gitrob
-    wget --quiet https://github.com/michenriksen/gitrob/releases/download/v2.0.0-beta/gitrob_linux_amd64_2.0.0-beta.zip -O gitrob.zip && \
-    unzip gitrob.zip -d gitrob && \
-    rm gitrob.zip && \
+    #wget --quiet https://github.com/michenriksen/gitrob/releases/download/v2.0.0-beta/gitrob_linux_amd64_2.0.0-beta.zip -O gitrob.zip && \
+    #unzip gitrob.zip -d gitrob && \
+    #rm gitrob.zip && \
+    go get github.com/michenriksen/gitrob
 # Install gitleaks
-    wget --quiet https://github.com/zricethezav/gitleaks/releases/download/v6.1.1/gitleaks-linux-amd64 -O gitleaks && \
+    wget --quiet https://github.com/zricethezav/gitleaks/releases/download/v8.2.5/gitleaks_8.2.5_linux_arm64.tar.gz -O gitleaks && \
     chmod +x gitleaks && \
 # Download github-search
     git clone --depth 1 https://github.com/gwen001/github-search.git && \
@@ -387,16 +401,17 @@ RUN \
 # Download dalfox
 WORKDIR /temp/dalfox
 RUN \
-    wget --quiet https://github.com/hahwul/dalfox/releases/download/v2.0.2/dalfox_2.0.2_linux_amd64.tar.gz -O dalfox.tar.gz && \
+    wget --quiet https://github.com/hahwul/dalfox/releases/download/v2.7.0/dalfox_2.7.0_linux_arm64.tar.gz -O dalfox.tar.gz && \
     tar -xzf dalfox.tar.gz && \
     rm dalfox.tar.gz
 # Download jaeles
 WORKDIR /temp/jaeles
 RUN \
-    wget --quiet https://github.com/jaeles-project/jaeles/releases/download/beta-v0.12/jaeles-v0.12-linux-amd64.zip -O jaeles.zip && \
+    #wget --quiet https://github.com/jaeles-project/jaeles/releases/download/beta-v0.12/jaeles-v0.12-linux-amd64.zip -O jaeles.zip && \
+    wget --quiet https://github.com/jaeles-project/jaeles/releases/download/beta-v0.17/jaeles-v0.17-linux.zip -O jaeles.zip && \
     unzip jaeles.zip && \
     rm jaeles.zip && \
-    mv jaeles-v0.12-linux-amd64 jaeles
+    mv jaeles-v0.17-linux jaeles
 
 # OWASP
 FROM builder4 as builder5
@@ -428,15 +443,15 @@ WORKDIR /tools/bruteForce/crowbar
 RUN pip install -r requirements.txt
 
 # BUILDER CRACKING
-FROM baseline as cracking
-RUN mkdir /temp
-WORKDIR /temp
-RUN \
-    # Download hashcat
-    wget --quiet https://hashcat.net/files/hashcat-6.1.1.7z -O hashcat.7z && \
-    7z x hashcat.7z && \
-    rm hashcat.7z && \
-    mv hashcat-6.1.1 hashcat && \
+#FROM baseline as cracking
+#RUN mkdir /temp
+#WORKDIR /temp
+#RUN \
+#    # Download hashcat
+#    wget --quiet https://hashcat.net/files/hashcat-6.1.1.7z -O hashcat.7z && \
+#    7z x hashcat.7z && \
+#    rm hashcat.7z && \
+#    mv hashcat-6.1.1 hashcat && \
     # Download john the ripper
     git clone --depth 1 https://github.com/magnumripper/JohnTheRipper -b bleeding-jumbo john
 
