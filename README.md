@@ -1,39 +1,20 @@
-## From The Original 
 <!-- markdownlint-disable MD033 MD041 -->
 
 <p align="center">
-  <a href="https://hub.docker.com/r/aaaguirrep/offensive-docker">
+  <a href="https://hub.docker.com/r/deen666/offensive-docker">
     <img
       alt="Offensive Docker"
-      src="https://github.com/aaaguirrep/offensive-docker/blob/master/img/banner.jpg"
+      src="https://github.com/deen666/offensive-docker-arm64/blob/master/img/banner.jpg"
       width="600"
     />
   </a>
 </p>
 <br/>
-<p align="center">
-  <a href="https://github.com/aaaguirrep/offensive-docker"><img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/aaaguirrep/offensive-docker"></a>
-  <a href="https://github.com/aaaguirrep/offensive-docker"><img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/aaaguirrep/offensive-docker"></a>
-  <a href="https://github.com/aaaguirrep/offensive-docker"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aaaguirrep/offensive-docker"></a>
-    <a href="https://github.com/aaaguirrep/offensive-docker"><img alt="GitHub issues" src="https://img.shields.io/github/issues/aaaguirrep/offensive-docker"></a>
-    <a href="https://github.com/aaaguirrep/offensive-docker/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/aaaguirrep/offensive-docker">
-  <a href="https://github.com/aaaguirrep/offensive-docker/blob/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/aaaguirrep/offensive-docker"></a>
-</p>
-<p align="center">
-  <a href="https://hub.docker.com/r/aaaguirrep/offensive-docker"><img alt="Docker Cloud Build Status" src="https://img.shields.io/docker/cloud/build/aaaguirrep/offensive-docker"></a>
-  <a href="https://hub.docker.com/r/aaaguirrep/offensive-docker"><img alt="Docker Automated build" src="https://img.shields.io/docker/automated/aaaguirrep/offensive-docker"></a>
-    <a href="https://hub.docker.com/r/aaaguirrep/offensive-docker"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/aaaguirrep/offensive-docker"></a>
-  <a href="https://hub.docker.com/r/aaaguirrep/offensive-docker"><img alt="Docker Image Size (latest by date)" src="https://img.shields.io/docker/image-size/aaaguirrep/offensive-docker"></a>
-    <a href="https://hub.docker.com/r/aaaguirrep/offensive-docker"><img alt="Docker Image Version (latest by date)" src="https://img.shields.io/docker/v/aaaguirrep/offensive-docker"></a>
-    <a href="https://hub.docker.com/r/aaaguirrep/offensive-docker"><img alt="Docker Stars" src="https://img.shields.io/docker/stars/aaaguirrep/offensive-docker"></a>
-</p>
-<p align="center">
-  <a href="https://discord.gg/2uBfu8E"><img alt="Discord" src="https://img.shields.io/discord/749093790676942888"></a>
-</p>
 
-Offensive Docker is an image with the more used tools to create an pentest environment easily and quickly.
 
-:arrow_right: **Note:** Check out the next repo to know how to launch offensive docker in a VPS in Google Cloud Platform or Digital Ocean (free credit included). [Offensive Docker VPS](https://github.com/aaaguirrep/offensive-docker-vps)
+Offensive Docker from https://github.com/deen666/offensive-docker is an image with the more used tools to create an pentest environment easily and quickly.
+I've made for arm64
+
 
 ### Table of Contents
 
@@ -93,12 +74,7 @@ Offensive Docker is an image with the more used tools to create an pentest envir
 - [:chart_with_upwards_trend: Stargazers over time](#chart_with_upwards_trend-stargazers-over-time)
 - [License](#license)
 
-## Links
 
-- 🎬 Video: [Demos](https://asciinema.org/~aaaguirrep)
-- 💬 Chat: [Discord](https://discord.gg/2uBfu8E)
-- 🌟 [VPS Automation](https://github.com/aaaguirrep/offensive-docker-vps)
-- 👉 [Advanced configurations](https://github.com/aaaguirrep/offensive-docker-custom)
 
 ## Features
 
@@ -168,7 +144,7 @@ Offensive Docker is an image with the more used tools to create an pentest envir
 
 - [nmap](https://github.com/nmap/nmap)
 - [masscan](https://github.com/robertdavidgraham/masscan)
-- [naabu](https://github.com/projectdiscovery/naabu)
+
 
 #### :mag: Recon
 
@@ -360,7 +336,8 @@ Offensive Docker is an image with the more used tools to create an pentest envir
 
 ## :memo: Documentation
 
-See the project's [wiki](https://github.com/aaaguirrep/offensive-docker/wiki) for documentation.
+See the project's [wiki](https://github.com/deen666/offensive-docker/wiki) for documentation.
+(From an original)
 
 ## :hammer_and_wrench: Usage
 
@@ -375,10 +352,10 @@ You can use the docker image by the next two options:
 
 ### Option 2 - Use the image from docker hub
 
-Use image from docker hub: [aaaguirrep/offensive-docker](https://hub.docker.com/r/aaaguirrep/offensive-docker)
+Use image from docker hub: [deen666/offensive-docker](https://hub.docker.com/r/deen666/offensive-docker)
 
-    docker pull aaaguirrep/offensive-docker
-    docker run --rm -it --name my-offensive-docker aaaguirrep/offensive-docker /bin/zsh
+    docker pull deen666/offensive-docker
+    docker run --rm -it --name my-offensive-docker deen666/offensive-docker /bin/zsh
 
 ### Considerations to run the container
 
@@ -386,15 +363,15 @@ There are differents use cases for use the image and you should know how to run 
 
 1. Use the container to access HTB (Hack the Box) machines by HTB vpn.
 
-        docker run --rm -it --cap-add=NET_ADMIN --device=/dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 --name my-offensive-docker aaaguirrep/offensive-docker /bin/zsh
+        docker run --rm -it --cap-add=NET_ADMIN --device=/dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 --name my-offensive-docker deen666/offensive-docker /bin/zsh
 
 2. Share information from your local directory to container directory and save information on your local directory. You should save information under /offensive directory.
 
-        docker run --rm -it -v /path/to/local/directory:/offensive --name my-offensive-docker aaaguirrep/offensive-docker /bin/zsh
+        docker run --rm -it -v /path/to/local/directory:/offensive --name my-offensive-docker deen666/offensive-docker /bin/zsh
 
 3. Expose internal container services (apache, squid) for your local environment.
 
-        docker run --rm -it --name my-offensive-docker -p 80:80 -p 3128:3128 aaaguirrep/offensive-docker /bin/zsh
+        docker run --rm -it --name my-offensive-docker -p 80:80 -p 3128:3128 deen666/offensive-docker /bin/zsh
 
     Inside the container start apache2 and squid services by the aliases.
 
@@ -403,7 +380,7 @@ There are differents use cases for use the image and you should know how to run 
 
 4. Mount directories by umount command.
 
-        docker run --rm -it --privileged --name my-offensive-docker aaaguirrep/offensive-docker /bin/zsh
+        docker run --rm -it --privileged --name my-offensive-docker deen666/offensive-docker /bin/zsh
 
 5. Tools are downloaded in /tools directory.
 
@@ -413,7 +390,7 @@ You can set up the docker image with nice configurations like as:
 
 ### 1. Configure credentials in the docker
 
-To use access keys, tokens or API Keys in the docker review the next repo [Offensive Docker Custom](https://github.com/aaaguirrep/offensive-docker-custom)
+To use access keys, tokens or API Keys in the docker review the next repo [Offensive Docker Custom](https://github.com/deen666/offensive-docker-custom)
 
 ### 2. Alias to connect to HTB (Hack the Box) VPN
 
@@ -429,7 +406,7 @@ Add the next line in step "Create shorcuts" in Dockerfile, build a new image and
 
 Create a new Dockerfile with the next steps, build a new image and run a new container with -v option.
 
-    FROM aaaguirrep/offensive-docker
+    FROM deen666/offensive-docker
 
     # Create a shortcut and load the ovpn file from workstation
     RUN echo "alias vpnhtb=\"openvpn /offensive/path/to/ovpn/file\"" >> /root/.zshrc
@@ -451,7 +428,7 @@ Add the next line in step "Create shorcuts" in Dockerfile, build a new image and
 
 Create a new Dockerfile with the next steps, build a new image and run a new container.
 
-    FROM aaaguirrep/offensive-docker
+    FROM deen666/offensive-docker
 
     # Save and load command history in your local environment
     RUN sed -i '1i export HISTFILE="/history/.zsh_history"' /root/.zshrc
@@ -473,11 +450,15 @@ The image was tested in the following environments:
 
 - Do not save information on container directories because it will be lost after delete the container, you should save information in your local environment using the parameter -v when you run the container. For instance:
 
-      docker run --rm -it -v /path/to/local/directory:/offensive --name my-offensive-docker aaaguirrep/offensive-docker /bin/zsh
+      docker run --rm -it -v /path/to/local/directory:/offensive --name my-offensive-docker deen666/offensive-docker /bin/zsh
 
   The above command specify a path local directory mapped with /offensive container directory. You should save all information under /offensive directory.
 
 - Use hashcat and john the ripper on controlled environments as CTF. You can experiment issues.
+
+
+## For an original please see:
+https://github.com/deen666/offensive-docker
 
 ## :coffee: Donations
 
@@ -489,15 +470,11 @@ While I drink the coffee I check more tools to add in the docker image.
 
 ## Contributors
 
-Thank you to all our [contributors](https://github.com/aaaguirrep/offensive-docker/graphs/contributors)!
+Thank you to all our [contributors](https://github.com/deen666/offensive-docker/graphs/contributors)!
 
 ## Contributing
 
 [Contributing Guide](CONTRIBUTING.md)
-
-## :chart_with_upwards_trend: Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/aaaguirrep/offensive-docker.svg)](https://starchart.cc/aaaguirrep/offensive-docker)
 
 ## License
 
