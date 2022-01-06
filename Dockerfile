@@ -4,8 +4,8 @@ FROM --platform=linux/arm64/v8 ubuntu AS baseline
 #Original from
 #LABEL maintainer="Arsenio Aguirre" \
 #      email="a_aguirre117@hotmail.com"
-LABEL maintainer="DEEN" 
-# build for arm64 by DEEN
+#
+LABEL maintainer="DEEN"
 
 
 RUN apt-get update && \
@@ -242,7 +242,7 @@ RUN \
     #tar -xzf subfinder.tar.gz && \
     #rm subfinder.tar.gz
     unzip subfinder.zip -d subfinder && \
-    rm subfinder.zip && \
+    rm subfinder.zip 
 
 # Download gau
 #WORKDIR /temp/gau
@@ -264,7 +264,7 @@ RUN \
     #wget --quiet https://github.com/projectdiscovery/httpx/releases/download/v1.0.1/httpx_1.0.1_linux_amd64.tar.gz -O httpx.tar.gz && \
     wget --quiet https://github.com/projectdiscovery/httpx/releases/download/v1.1.4/httpx_1.1.4_linux_arm64.zip -O httpx.zip && \
     unzip httpx.zip -d httpx && \
-    rm httpx.zip && \
+    rm httpx.zip 
 
 # RECON
 FROM builder as builder2
