@@ -1,4 +1,4 @@
-export VERSION=v0.3.3-arm64
+export VERSION=v0.3.5-arm64
 # Colours
 greenColour="\e[0;32m\033[1m"
 endColour="\033[0m\e[0m"
